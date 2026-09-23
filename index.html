@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <h1>Currency Converter</h1>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <input type="text" id="amount" placeholder="Enter amount">
+  <select id="fromCurrency">
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+    <option value="IND">INR</option>
+  </select>
+  <select id="toCurrency">
+    <option value="IND">INR</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+  </select>
+  <button id="convertButton">Convert</button>
+  <div id="result"></div>
+  <script>
+    const amountInput = document.getElementById('amount');
+    const fromCurrencySelect = document.getElementById('fromCurrency');
+    const toCurrencySelect = document.getElementById('toCurrency');
+    const convertButton = document.getElementById('convertButton');
+    const resultDiv = document.getElementById('result');
+    convertButton.addEventListener('click', () => {
+      const amount = parseFloat(amountInput.value);
+      const fromCurrency = fromCurrencySelect.value;
+      const toCurrency = toCurrencySelect.value;
+      if (isNaN(amount)) {
+        resultDiv.textContent = 'Please enter a valid amount.';
+        return;
+      }
+      resultDiv.textContent = `Converting ${amount} ${fromCurrency} to ${toCurrency}...`;
+    });
+  </script>
+</html>
